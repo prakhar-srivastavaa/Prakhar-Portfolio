@@ -84,7 +84,9 @@ export default function Cursor() {
           />
         </div>
       ))}
-      
+          ref={(el) => {
+            trailRefs.current[i] = el;
+          }}
       {/* Meteor core */}
       <div
         ref={cursorRef}
