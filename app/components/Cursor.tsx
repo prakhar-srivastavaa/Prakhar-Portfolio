@@ -69,7 +69,7 @@ export default function Cursor() {
       {[...Array(12)].map((_, i) => (
         <div
           key={i}
-          ref={(el) => (trailRefs.current[i] = el)}
+          ref={(el) => { trailRefs.current[i] = el; }}
           aria-hidden
           className="pointer-events-none fixed left-0 top-0 z-[9998] h-4 w-4 -translate-x-1/2 -translate-y-1/2"
           style={{
