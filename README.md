@@ -44,9 +44,10 @@ npm run build
 npm start
 ```
 
+
 ## 📧 Contact
 
-- **Email:** prakharsrivastava@gmail.com
+- **Email:** emailprakharsrivastava@gmail.com
 - **LinkedIn:** [prakhar-srivastavaa](https://linkedin.com/in/prakhar-srivastavaa)
 - **GitHub:** [prakhar-srivastavaa](https://github.com/prakhar-srivastavaa)
 

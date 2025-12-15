@@ -89,6 +89,7 @@ export default function Contact() {
                 type="submit"
                 disabled={status === "sending"}
                 className="rounded-full bg-amber-300 px-6 py-3 text-slate-900 font-semibold shadow-lg transition-all hover:bg-amber-400 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                suppressHydrationWarning
               >
                 {status === "sending" ? "Sending..." : "Send Message"}
               </button>

@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:emailprakharsrivastava@gmail.com"
+              href="https://linkedin.com/in/prakhar-srivastavaa/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-amber-300 px-5 py-2 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
@@ -47,13 +47,19 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-1 flex items-center justify-center">
-          <div className="relative h-72 w-72 rounded-full border border-amber-200/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_25px_70px_rgba(17,24,39,0.6)] lg:h-80 lg:w-80">
+          <div className="relative h-72 w-72 rounded-full border border-amber-200/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_25px_70px_rgba(17,24,39,0.6)] lg:h-80 lg:w-80 group cursor-pointer">
             <div className="absolute inset-1 rounded-full border border-amber-300/30" />
             <img
               src="/pic.jpg"
               alt="Prakhar Srivastava"
-              className="absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-full object-cover"
+              className="absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-full object-cover transition-transform duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.5)]"
             />
+            {/* Popup on hover */}
+            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-800 text-white px-2 py-1 rounded text-sm whitespace-nowrap">
+                Prakhar Srivastava
+              </div>
+            </div>
           </div>
         </div>
       </div>
