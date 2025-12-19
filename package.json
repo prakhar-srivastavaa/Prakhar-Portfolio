@@ -9,10 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "gsap": "^3.12.5",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
-    "gsap": "^3.12.5",
+    "sharp": "^0.34.5",
     "three": "^0.168.0"
   },
   "devDependencies": {
