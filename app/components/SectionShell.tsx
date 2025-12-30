@@ -30,8 +30,8 @@ export default function SectionShell({ id, children }: SectionShellProps) {
     <section
       id={id}
       ref={ref}
-      className={`snap-start snap-always min-h-[85vh] flex items-center justify-center transition-all duration-200 ease-out will-change-transform will-change-opacity ${
-        isVisible ? "opacity-100 scale-100" : "opacity-80 scale-[0.995]"
+      className={`min-h-[85vh] flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform will-change-opacity ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
       {children}

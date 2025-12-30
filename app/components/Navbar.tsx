@@ -6,6 +6,7 @@ export default function Navbar() {
       <div className="flex gap-6 text-lg font-semibold">
         <Link href="/#home" className="hover:text-amber-300 transition-colors">Home</Link>
         <Link href="/#about" className="hover:text-amber-300 transition-colors">About</Link>
+        <Link href="/#experience" className="hover:text-amber-300 transition-colors">Experience</Link>
         <Link href="/#projects" className="hover:text-amber-300 transition-colors">Projects</Link>
         <Link href="/#skills" className="hover:text-amber-300 transition-colors">Skills</Link>
         <Link href="/#resume" className="hover:text-amber-300 transition-colors">Resume</Link>

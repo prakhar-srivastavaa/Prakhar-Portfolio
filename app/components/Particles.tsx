@@ -21,7 +21,7 @@ export default function Particles() {
     mount.appendChild(renderer.domElement);
 
     // Circular glowing particles with random motion and merging effect
-    const particleCount = 1000;
+    const particleCount = 600; // Reduced from 1000 for better performance
     const particles = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount * 3);
     const sizes = new Float32Array(particleCount);
@@ -110,20 +110,22 @@ export default function Particles() {
         positions[i3 + 1] += velocities[i3 + 1];
         positions[i3 + 2] += velocities[i3 + 2];
 
-        // Particle merging effect - attract nearby particles
-        for (let j = i + 1; j < Math.min(i + 5, particleCount); j++) {
-          const j3 = j * 3;
-          const dx = positions[j3] - positions[i3];
-          const dy = positions[j3 + 1] - positions[i3 + 1];
-          const dz = positions[j3 + 2] - positions[i3 + 2];
-          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-          
-          if (dist < 8 && dist > 0.1) {
-            const force = 0.02 / dist;
-            velocities[i3] += dx * force;
-            velocities[i3 + 1] += dy * force;
-            velocities[j3] -= dx * force;
-            velocities[j3 + 1] -= dy * force;
+        // Particle merging effect - attract nearby particles (optimized)
+        if (i % 2 === 0) { // Only check every other particle
+          for (let j = i + 1; j < Math.min(i + 3, particleCount); j++) { // Reduced from 5 to 3
+            const j3 = j * 3;
+            const dx = positions[j3] - positions[i3];
+            const dy = positions[j3 + 1] - positions[i3 + 1];
+            const dz = positions[j3 + 2] - positions[i3 + 2];
+            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+            
+            if (dist < 8 && dist > 0.1) {
+              const force = 0.015 / dist; // Reduced force slightly
+              velocities[i3] += dx * force;
+              velocities[i3 + 1] += dy * force;
+              velocities[j3] -= dx * force;
+              velocities[j3 + 1] -= dy * force;
+            }
           }
         }
 
@@ -155,6 +157,7 @@ export default function Particles() {
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
+    let mouseMoveTimeout: NodeJS.Timeout;
     const handleMouse = (e: MouseEvent) => {
       mousePos.x = (e.clientX / window.innerWidth) * 2 - 1;
       mousePos.y = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -164,7 +167,7 @@ export default function Particles() {
     };
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouse);
+    window.addEventListener("mousemove", handleMouse, { passive: true });
 
     return () => {
       window.removeEventListener("resize", handleResize);

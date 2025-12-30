@@ -83,10 +83,11 @@ export default function Contact() {
   return (
     <section className="mx-auto w-full max-w-2xl px-6 py-20">
       <div className="w-full max-w-2xl mx-auto">
-        <h2 className="mb-8 text-center text-4xl font-bold text-white">
+        <h2 className="mb-4 text-center text-4xl font-bold text-white">
           Get In Touch
         </h2>
-
+        
+    
         {status === "success" ? (
           <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-6 text-center text-green-400">
             Message sent successfully! I'll get back to you soon.

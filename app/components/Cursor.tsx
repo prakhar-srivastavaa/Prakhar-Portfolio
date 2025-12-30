@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const trailRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const trailCount = 12;
+  const trailCount = 8; // Reduced from 12
+  const mousePos = useRef({ x: 0, y: 0 });
+  const cursorPos = useRef({ x: 0, y: 0 });
+  const trailPositions = useRef<{ x: number; y: number }[]>(
+    Array.from({ length: 8 }, () => ({ x: 0, y: 0 }))
+  );
+  const rafId = useRef<number>();
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -15,43 +20,42 @@ export default function Cursor() {
     const trails = trailRefs.current.filter((trail): trail is HTMLDivElement => trail !== null);
 
     const move = (e: MouseEvent) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.1,
-        ease: "power2.out",
-      });
-
-      trails.forEach((trail, index) => {
-        const delay = (index + 1) * 0.025;
-        const scale = 1 - (index * 0.08);
-        
-        gsap.to(trail, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.35 + (index * 0.08),
-          scale: scale,
-          ease: "power3.out",
-          delay: delay,
-        });
-      });
+      mousePos.current.x = e.clientX;
+      mousePos.current.y = e.clientY;
     };
 
-    const down = () => {
-      gsap.to(cursor, { scale: 0.8, duration: 0.15, ease: "power2.out" });
-      trails.forEach((trail) => {
-        gsap.to(trail, { scale: 0.7, duration: 0.2, ease: "power2.out" });
+    const animate = () => {
+      // Smooth cursor movement
+      cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.2;
+      cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.2;
+      
+      cursor.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px)`;
+
+      // Trail animation with simple spring physics
+      trails.forEach((trail, index) => {
+        const target = index === 0 ? cursorPos.current : trailPositions.current[index - 1];
+        const spring = 0.15 - index * 0.015;
+        
+        trailPositions.current[index].x += (target.x - trailPositions.current[index].x) * spring;
+        trailPositions.current[index].y += (target.y - trailPositions.current[index].y) * spring;
+        
+        trail.style.transform = `translate(${trailPositions.current[index].x}px, ${trailPositions.current[index].y}px) scale(${1 - index * 0.09})`;
       });
+
+      rafId.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const down = () => {
+      if (cursor) cursor.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) scale(0.8)`;
     };
     
     const up = () => {
-      gsap.to(cursor, { scale: 1, duration: 0.2, ease: "power2.out" });
-      trails.forEach((trail) => {
-        gsap.to(trail, { scale: 1, duration: 0.3, ease: "power2.out" });
-      });
+      if (cursor) cursor.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px) scale(1)`;
     };
 
-    window.addEventListener("mousemove", move);
+    window.addEventListener("mousemove", move, { passive: true });
     window.addEventListener("mousedown", down);
     window.addEventListener("mouseup", up);
 
@@ -59,6 +63,7 @@ export default function Cursor() {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mousedown", down);
       window.removeEventListener("mouseup", up);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
 
@@ -71,9 +76,9 @@ export default function Cursor() {
             trailRefs.current[i] = el;
           }}
           aria-hidden="true"
-          className="pointer-events-none fixed left-0 top-0 z-[9998] h-4 w-4 -translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none fixed left-0 top-0 z-[9998] h-4 w-4 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{
-            opacity: 1 - (i * 0.08),
+            opacity: 1 - (i * 0.1),
           }}
         >
           <div 
@@ -88,7 +93,7 @@ export default function Cursor() {
       <div
         ref={cursorRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 will-change-transform"
       >
         <div className="h-full w-full rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.9),0_0_30px_rgba(255,255,255,0.5)]" />
       </div>

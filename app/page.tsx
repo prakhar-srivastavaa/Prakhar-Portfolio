@@ -1,5 +1,6 @@
 import Home from "./components/Home";
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Resume from "./components/Resume";
@@ -9,6 +10,7 @@ import SectionShell from "./components/SectionShell";
 const sections = [
   { id: "home", component: <Home /> },
   { id: "about", component: <About /> },
+  { id: "experience", component: <Experience /> },
   { id: "projects", component: <Projects /> },
   { id: "skills", component: <Skills /> },
   { id: "resume", component: <Resume /> },
@@ -17,7 +19,7 @@ const sections = [
 
 export default function MainPage() {
   return (
-    <main className="mx-auto flex max-w-[min(1200px,100%)] flex-col gap-24 px-4 py-12 md:px-6 lg:px-8 snap-y snap-mandatory">
+    <main className="mx-auto flex max-w-[min(1200px,100%)] flex-col gap-24 px-4 py-12 md:px-6 lg:px-8">
       {sections.map((section) => (
         <SectionShell id={section.id} key={section.id}>
           {section.component}
