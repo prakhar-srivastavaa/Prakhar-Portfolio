@@ -14,7 +14,7 @@ const skillGroups = [
   },
   {
     title: "Tools & Platforms",
-    items: ["Git", "Postman", "VS Code", "IntelliJ", "Linux"],
+    items: ["Git", "Postman", "VS Code", "IntelliJ", "Linux", "Docker", "GitHub Actions"],
   },
   {
     title: "Automation Workflows",
