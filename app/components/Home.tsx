@@ -3,31 +3,31 @@
 // Home.tsx
 export default function Home() {
   return (
-    <section className="mx-auto w-full max-w-6xl relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
+    <section className="mx-auto w-full max-w-6xl relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 px-4 py-8 md:px-6 md:py-10 shadow-2xl backdrop-blur-md">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
-        <div className="flex-1 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1 text-sm text-amber-200">
+        <div className="flex-1 space-y-4 md:space-y-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-3 py-1 text-xs md:text-sm text-amber-200">
             <span className="h-2 w-2 rounded-full bg-amber-300" />
             Prakhar Srivastava — Full-Stack & ML
           </div>
-          <h1 className="text-4xl font-extrabold leading-tight text-amber-100 md:text-5xl">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-amber-100">
             Building immersive web experiences with code, motion, and AI.
           </h1>
-          <p className="text-lg text-slate-200/80">
+          <p className="text-base md:text-lg text-slate-200/80">
             Bangalore-based developer crafting performant products, automation, and ML-powered tools. I love shaping ideas into interactive experiences.
           </p>
-          <div className="grid gap-3 text-sm font-semibold text-slate-100/90 sm:grid-cols-2">
+          <div className="grid gap-2 md:gap-3 text-xs md:text-sm font-semibold text-slate-100/90 sm:grid-cols-2">
             <span>FastAPI + Python backend</span>
             <span>TypeScript + Next.js frontend</span>
             <span>Agentic AI / GenAI workflows</span>
             <span>Automation, data, and SQL</span>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3 md:gap-4">
             <a
               href="https://linkedin.com/in/prakhar-srivastavaa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-amber-300 px-5 py-2 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
+              className="rounded-full bg-amber-300 px-4 py-2 md:px-5 text-sm md:text-base text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
             >
               Get in touch
             </a>
@@ -35,21 +35,21 @@ export default function Home() {
               href="https://github.com/prakhar-srivastavaa"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 px-5 py-2 font-semibold text-amber-100 transition hover:border-amber-300 hover:text-amber-300"
+              className="rounded-full border border-white/20 px-4 py-2 md:px-5 text-sm md:text-base font-semibold text-amber-100 transition hover:border-amber-300 hover:text-amber-300"
             >
               View GitHub
             </a>
           </div>
-          <div className="flex flex-wrap gap-3 text-sm text-slate-300/80">
-            <span className="rounded-full border border-white/10 px-3 py-1">Next.js</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">TypeScript</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">FastAPI</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">Automation</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">ML / NLP</span>
+          <div className="flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm text-slate-300/80">
+            <span className="rounded-full border border-white/10 px-2 py-1 md:px-3">Next.js</span>
+            <span className="rounded-full border border-white/10 px-2 py-1 md:px-3">TypeScript</span>
+            <span className="rounded-full border border-white/10 px-2 py-1 md:px-3">FastAPI</span>
+            <span className="rounded-full border border-white/10 px-2 py-1 md:px-3">Automation</span>
+            <span className="rounded-full border border-white/10 px-2 py-1 md:px-3">ML / NLP</span>
           </div>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="relative h-72 w-72 lg:h-80 lg:w-80 group cursor-pointer">
+          <div className="relative h-64 w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 group cursor-pointer">
             {/* Animated ring on hover */}
             <div className="absolute inset-0 rounded-full border-2 border-amber-300/40 opacity-0 group-hover:opacity-100 group-hover:animate-[pulse-ring_1.5s_ease-out_infinite]" />
             
@@ -83,10 +83,10 @@ export default function Home() {
           </div>
           
           {/* Name and Location */}
-          <div className="mt-16 text-center">
-            <h2 className="text-4xl font-bold text-white mb-2">Prakhar Srivastava</h2>
-            <div className="flex items-center justify-center gap-2 text-slate-400 mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mt-12 md:mt-16 text-center">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">Prakhar Srivastava</h2>
+            <div className="flex items-center justify-center gap-2 text-sm md:text-base text-slate-400 mb-4 md:mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -94,7 +94,7 @@ export default function Home() {
             </div>
             
             {/* Social Links */}
-            <div className="flex items-center justify-center gap-8">
+            <div className="flex items-center justify-center gap-6 md:gap-8">
               <a
                 href="mailto:emailprakharsrivastava@gmail.com"
                 className="flex flex-col items-center gap-2 text-slate-400 hover:text-amber-300 transition-colors group"

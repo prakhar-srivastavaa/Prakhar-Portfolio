@@ -28,20 +28,21 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
-      <h2 className="text-3xl font-bold text-amber-100 mb-6">Skills</h2>
-      <p className="text-lg text-slate-200/90 mb-6">
+    <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-slate-900/30 px-4 py-8 md:px-6 md:py-10 shadow-2xl backdrop-blur-md">
+      <h2 className="text-2xl md:text-3xl font-bold text-amber-100 mb-4 md:mb-6">Skills</h2>
+      <p className="text-base md:text-lg text-slate-200/90 mb-4 md:mb-6">
         I blend modern front-end frameworks, automation, and machine learning tools to ship polished, performance-driven experiences.
       </p>
-      <div className="space-y-5">
+      <div className="space-y-4 md:space-y-5">
         {skillGroups.map((group) => (
           <div key={group.title}>
-            <h3 className="text-lg font-semibold text-amber-200 mb-2">{group.title}</h3>
+            <h3 className="text-base md:text-lg font-semibold text-amber-200 mb-2">{
+group.title}</h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-slate-800/80 px-3 py-1 text-sm text-slate-100"
+                  className="rounded-full border border-white/10 bg-slate-800/80 px-2 py-1 md:px-3 text-xs md:text-sm text-slate-100"
                 >
                   {item}
                 </span>

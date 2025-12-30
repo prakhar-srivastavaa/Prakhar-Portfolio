@@ -60,9 +60,9 @@ export default function Projects() {
 
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
-        <h2 className="text-3xl font-bold text-amber-100 mb-6">Projects</h2>
-        <div className="grid gap-6 md:grid-cols-3">
+      <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-slate-900/30 px-4 py-8 md:px-6 md:py-10 shadow-2xl backdrop-blur-md">
+        <h2 className="text-2xl md:text-3xl font-bold text-amber-100 mb-4 md:mb-6">Projects</h2>
+        <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <article 
               key={project.title} 
