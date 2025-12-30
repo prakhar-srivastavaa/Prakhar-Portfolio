@@ -17,6 +17,10 @@ const skillGroups = [
     items: ["Git", "Postman", "VS Code", "IntelliJ", "Linux"],
   },
   {
+    title: "Automation Workflows",
+    items: ["n8n", "Zapier", "Make"],
+  },
+  {
     title: "Concepts",
     items: ["RESTful API Design", "Automation", "Machine Learning", "NLP"],
   },
