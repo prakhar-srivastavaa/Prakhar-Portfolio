@@ -77,6 +77,12 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover object-center"
                   />
+                ) : project.title.includes("whatsNow") ? (
+                  <img 
+                    src="/whatsnow.png" 
+                    alt={project.title}
+                    className="w-full h-full object-cover object-center"
+                  />
                 ) : (
                   <>
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/20 to-teal-500/20" />

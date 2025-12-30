@@ -25,16 +25,16 @@ export default function Cursor() {
     };
 
     const animate = () => {
-      // Smooth cursor movement
-      cursorPos.current.x += (mousePos.current.x - cursorPos.current.x) * 0.2;
-      cursorPos.current.y += (mousePos.current.y - cursorPos.current.y) * 0.2;
+      // Instant cursor movement - no smoothing
+      cursorPos.current.x = mousePos.current.x;
+      cursorPos.current.y = mousePos.current.y;
       
       cursor.style.transform = `translate(${cursorPos.current.x}px, ${cursorPos.current.y}px)`;
 
-      // Trail animation with simple spring physics
+      // Trail animation with faster response
       trails.forEach((trail, index) => {
         const target = index === 0 ? cursorPos.current : trailPositions.current[index - 1];
-        const spring = 0.15 - index * 0.015;
+        const spring = 0.3 - index * 0.02; // Increased from 0.15 to 0.3 for faster response
         
         trailPositions.current[index].x += (target.x - trailPositions.current[index].x) * spring;
         trailPositions.current[index].y += (target.y - trailPositions.current[index].y) * spring;
